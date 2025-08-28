@@ -1,5 +1,6 @@
 const ContactMessage = require('../models/ContactMessage');
 const Joi = require('joi');
+const { sendContactEmail, sendAutoReply } = require('../utils/emailService');
 
 // Validation schema for contact form
 const contactSchema = Joi.object({
@@ -35,9 +36,29 @@ const submitContact = async (req, res) => {
 
     await contactMessage.save();
 
+    // Send email notifications
+    try {
+      // Send email to yourself
+      await sendContactEmail({
+        name: value.name,
+        email: value.email,
+        message: value.message
+      });
+
+      // Send auto-reply to sender
+      await sendAutoReply({
+        name: value.name,
+        email: value.email,
+        message: value.message
+      });
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      // Don't fail the request if email fails, just log it
+    }
+
     res.status(201).json({
       success: true,
-      message: 'Contact message submitted successfully!',
+      message: 'Contact message submitted successfully! I\'ll get back to you soon.',
       data: {
         id: contactMessage._id,
         name: contactMessage.name,

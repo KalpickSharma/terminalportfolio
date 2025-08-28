@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TerminalSquare, Link2, Github, Mail, Linkedin, Globe, Sparkles, Instagram } from "lucide-react";
 import PortfolioAPI from "../services/api.js";
+import ContactForm from "./ContactForm.jsx";
 
 // =============================
 // Terminal Portfolio - Single File
@@ -435,30 +436,13 @@ export default function TerminalPortfolio() {
       ),
       contact: () => (
         <Block borderClass={borderClass} title="contact">
-          <div className={`text-center p-4 border ${isGreen ? 'border-green-600/30' : 'border-red-600/30'} rounded-lg ${isGreen ? 'bg-green-500/5' : 'bg-red-500/5'}`}>
-            <h3 className="text-xl font-semibold text-white mb-2">Get In Touch</h3>
-            <p className="text-zinc-300">Open to freelance opportunities & collaborations</p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4 mt-4">
-            <div className={`flex items-center gap-3 p-3 border ${isGreen ? 'border-green-600/30' : 'border-red-600/30'} rounded-lg`}>
-              <Mail className={`w-5 h-5 ${isGreen ? 'text-green-400' : 'text-red-400'}`} />
-              <div>
-                <p className="text-zinc-400 text-sm">Email</p>
-                <p className="text-white">{DATA.contact.email}</p>
-              </div>
-            </div>
-            <div className={`flex items-center gap-3 p-3 border ${isGreen ? 'border-green-600/30' : 'border-red-600/30'} rounded-lg`}>
-              <div className={`${isGreen ? 'text-green-400' : 'text-red-400'}`}>📱</div>
-              <div>
-                <p className="text-zinc-400 text-sm">Phone</p>
-                <p className="text-white">{DATA.contact.phone}</p>
-              </div>
-            </div>
-          </div>
-          <div className={`text-center p-3 mt-4 border ${isGreen ? 'border-green-600/30' : 'border-red-600/30'} rounded-lg`}>
-            <p className="text-zinc-400 text-sm">Location</p>
-            <p className="text-white">{DATA.contact.location}</p>
-          </div>
+          <ContactForm 
+            isGreen={isGreen} 
+            onSubmitSuccess={() => {
+              // Optional: Add any success callback here
+              console.log('Contact form submitted successfully');
+            }}
+          />
         </Block>
       ),
       test: () => <SelfTests />,
