@@ -143,7 +143,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 
-Your Name - [GitHub](https://github.com/yourusername)
+Your Name - [Kalpick Sharma](https://github.com/KalpickSharma)
 
 ---
 
