@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TerminalSquare, Link2, Github, Mail, Linkedin, Globe, Sparkles, Instagram } from "lucide-react";
 import PortfolioAPI from "../services/api.js";
-import ContactForm from "./ContactForm.jsx";
+
 
 // =============================
 // Terminal Portfolio - Single File
@@ -436,13 +436,7 @@ export default function TerminalPortfolio() {
       ),
       contact: () => (
         <Block borderClass={borderClass} title="contact">
-          <ContactForm 
-            isGreen={isGreen} 
-            onSubmitSuccess={() => {
-              // Optional: Add any success callback here
-              console.log('Contact form submitted successfully');
-            }}
-          />
+          <div className="text-zinc-300">Contact form has been removed. Please reach out via email: <a href="mailto:kalpicksharma@gmail.com" className="underline text-green-400">kalpicksharma@gmail.com</a></div>
         </Block>
       ),
       test: () => <SelfTests />,
