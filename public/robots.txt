@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://kalpick.terminal.netlify.app/sitemap.xml
+Sitemap: https://kalpick-terminal.netlify.app/sitemap.xml
